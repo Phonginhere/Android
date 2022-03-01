@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="My First App"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="196dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="196dp"
+        android:background="@drawable/btn_shape_round"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <RadioGroup
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button">
+
+        <RadioButton
+            android:id="@+id/rbDanang"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:text="Da Nang"
+            tools:layout_editor_absoluteX="129dp"
+            tools:layout_editor_absoluteY="336dp" />
+
+        <RadioButton
+            android:id="@+id/rbHaiphong"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:text="Hai Phong"
+            tools:layout_editor_absoluteX="23dp"
+            tools:layout_editor_absoluteY="336dp" />
+
+        <RadioButton
+            android:id="@+id/rbSaigon"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="Sai Gon"
+            tools:layout_editor_absoluteX="228dp"
+            tools:layout_editor_absoluteY="336dp" />
+
+        <RadioButton
+            android:id="@+id/rbHanoi"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:text="Hanoi"
+            tools:layout_editor_absoluteX="318dp"
+            tools:layout_editor_absoluteY="336dp" />
+    </RadioGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
