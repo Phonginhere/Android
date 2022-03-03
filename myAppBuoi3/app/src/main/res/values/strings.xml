@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">myAppBuoi3</string>
+    <string name="java_programming">Java Programming Language</string>
+    <string name="csharp_programming">C# and .NET</string>
+    <color name="textcolorjava">#ffcc33</color>
+    <color name="textcolorcsharp">#F44336</color>
+    <color name="textcolortitle">#2196F3</color>
+</resources>
