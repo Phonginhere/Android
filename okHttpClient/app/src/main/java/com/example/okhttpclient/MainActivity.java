@@ -19,7 +19,8 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     private Button getBtn;
     private TextView result;
-    private OkHttpClient client = new OkHttpClient();
+    private OkHttpClient client;
+    public static final String urlGetPhotos = "https://jsonplaceholder.typicode.com/photos";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +34,21 @@ public class MainActivity extends AppCompatActivity {
                 getWebService();
             }
         });
-        client = new OkHttpClient();
+        //client = new OkHttpClient();
     }
     private void getWebService(){
-        final Request request = new Request.Builder().url("https://jsonplaceholder.typicode.com/photos").build();
-        client.newCall(request).enqueue(new Callback() {
+
+        //final Request request = new Request.Builder().url(urlGetPhotos).build();
+        int i =0;
+        i++;
+        client = new OkHttpClient();
+        client.newCall(new Request.Builder().url(urlGetPhotos).build()).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        result.setText("fail");
+                        result.setText("Failure !");
                     }
                 });
             }
@@ -53,15 +58,25 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        try{
+                        try {
                             result.setText(response.body().string());
-                        }catch (IOException ioe){
+                        } catch (IOException ioe) {
                             result.setText("Error during get body");
                         }
                     }
                 });
             }
         });
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+
+//            }
+//            @Override
+//            public void onResponse(Call call, final Response response) {
+
+//            }
+//        });
     }
 
 }
