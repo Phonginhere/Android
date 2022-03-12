@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".activity.PersonList">
 
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="358dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
         android:id="@+id/listPeople"
         android:layout_width="409dp"
         android:layout_height="374dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <Button
         android:id="@+id/btnNavigatePlist"
@@ -24,4 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listPeople" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

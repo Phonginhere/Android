@@ -3,10 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/GITHUB/Android/ListApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/GITHUB/Android/ListApp/app/src/main/res/layout/activity_person_list.xml" value="0.22826086956521738" />
-        <entry key="..\:/GITHUB/Android/ListApp/app/src/main/res/layout/person_list.xml" value="0.264" />
-        <entry key="..\:/GITHUB/Android/ListApp/app/src/main/res/layout/person_list_item.xml" value="0.22826086956521738" />
+        <entry key="..\:/GITHUB/Android/buoi8service/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/GITHUB/Android/buoi8service/app/src/main/res/layout/photo_list.xml" value="0.1" />
+        <entry key="..\:/GITHUB/Android/buoi8service/app/src/main/res/layout/photo_list_activity.xml" value="0.1" />
       </map>
     </option>
   </component>

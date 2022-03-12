@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Id: "
+        android:text="albumId: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_alignLeft="@+id/textView1"
-        android:text="Name: "
+        android:text="id: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/textView2"
-        android:text="Age: "
+        android:text="title: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -38,23 +38,32 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"
-        android:text="Occupation: "
+        android:text="url: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:text="thumbnailUrl: "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <!-- part 2-->
 
     <TextView
-        android:id="@+id/textViewId"
+        android:id="@+id/albumId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_alignLeft="@+id/textViewName"
+        android:layout_alignLeft="@+id/id"
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="1dp"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
@@ -64,7 +73,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textViewAge"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView3"
@@ -75,16 +84,26 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textViewOccupation"
+        android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView4"
-        android:layout_alignLeft="@+id/textViewAge"
+        android:layout_alignLeft="@+id/title"
         android:layout_alignBottom="@+id/textView4"
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="1dp"
         android:text="TextView" />
 
+    <TextView
+        android:id="@+id/thumbnailUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="1dp"
+        android:text="TextView" />
 
 
 
