@@ -24,18 +24,17 @@ public class PhotoListActivity extends AppCompatActivity {
         listViewPhotos = (ListView) findViewById(R.id.listViewPhotos);
         photoService.getAllPhotos(new IPhotosResponse() {
             @Override
-            public void getPhotosResponse(ArrayList<Photo> photos, String error) {
-
+            public void getPhotosResponse(ArrayList<Photo> photos) {
+                listViewPhotos.setAdapter(new PhotoAdapter(photos)); //cau noi giua data va giao dien tren listview
             }
 
             @Override
             public void sayHello(String content) {
-                Log.d("aa", "haha");
-                //thay vi truyen content, truyen photo sang activity
-                listViewPhotos.setAdapter(new PhotoAdapter(photos));
+
             }
         });
-        listViewPhotos.setAdapter(new PhotoAdapter(photos)); //cau noi giua data va giao dien tren listview
+
+        //listViewPhotos.setAdapter(new PhotoAdapter(photos));
 
 
 //        photos.add(new Photo(1, 1, "hahah", "https://via.placeholder.com/600/92c952", "https://via.placeholder.com/600/92c952"));
