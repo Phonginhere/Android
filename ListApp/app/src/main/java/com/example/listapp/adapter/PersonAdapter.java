@@ -1,5 +1,6 @@
 package com.example.listapp.adapter;
 
+import android.content.Context;
 import android.provider.Contacts;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,102 +23,90 @@ import java.util.stream.Collectors;
 
 public class PersonAdapter extends BaseAdapter implements Filterable {
     private List<Person> people;
+    private List<Person> filteredPeople;
+    private Context context;
 
-    public PersonAdapter(List<Person> people) {
-        super(); // gọi base Adapter
+    public PersonAdapter(List<Person> people, Context context) {
+        this.filteredPeople = people;
         this.people = people;
+        this.context = context;
     }
 
     @Override
-    public int getCount(){
-        return people.size();
+    public int getCount() {
+        return filteredPeople.size();
     }
 
     @Override
-    public Object getItem(int i){
-        return people.get(i);
+    public Object getItem(int i) {
+        return null;
     }
 
     @Override
-    public long getItemId(int i){
-        return people.get(i).getPersonId();
+    public long getItemId(int i) {
+        return i;
     }
+
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup){
-        view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.person_list, viewGroup, false);
+    public View getView(int i, View view, ViewGroup parent) {
+        view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.person_list, parent, false);
         TextView textViewId = view.findViewById(R.id.textViewId);
         TextView textViewName = view.findViewById(R.id.textViewName);
         TextView textViewAge = view.findViewById(R.id.textViewAge);
         TextView textViewOccupation = view.findViewById(R.id.textViewOccupation);
         //fetch data
-        Person selectedPerson = people.get(i);
-        textViewId.setText(String.valueOf(selectedPerson.getPersonId()));
-        textViewName.setText(selectedPerson.getPersonName());
-        textViewAge.setText(String.valueOf(selectedPerson.getAge()));
-        textViewOccupation.setText(selectedPerson.getOccupation());
+
+        textViewId.setText(String.valueOf(filteredPeople.get(i).getPersonId()));
+        textViewName.setText(filteredPeople.get(i).getPersonName());
+        textViewAge.setText(String.valueOf(filteredPeople.get(i).getAge()));
+        textViewOccupation.setText(filteredPeople.get(i).getOccupation());
+
+//        Person selectedPerson = people.get(i);
+//        textViewId.setText(String.valueOf(selectedPerson.getPersonId()));
+//        textViewName.setText(selectedPerson.getPersonName());
+//        textViewAge.setText(String.valueOf(selectedPerson.getAge()));
+//        textViewOccupation.setText(selectedPerson.getOccupation());
 
         return view;
     }
 
-
-
-
-    protected FilterResults  filter(String charText) {
-        if(charText != null){
-            String filterString = charText.toString().toLowerCase();
-            final ArrayList<Person> nlist = new ArrayList<Person>(count);
-            int count = people.size();
-            Person filterablePerson;
-
-            for (int i = 0; i < count; i++) {
-                filterablePerson = people.get(i);
-                if (filterablePerson.getPersonName().toLowerCase().contains(filterString)
-                        || filterablePerson.getPersonId() == Integer.parseInt(filterString)
-                        || filterablePerson.getAge() == Integer.parseInt(filterString)
-                        || filterablePerson.getOccupation().toLowerCase().contains(filterString)){
-                    nlist.add(filterablePerson);
-                }
-            }
-            results.values = nlist;
-            results.count = nlist.size();
-        }
-    }
-
     @Override
     public Filter getFilter() {
-        return new Filter() {
+        Filter filter = new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
-                String filterString = constraint.toString().toLowerCase();
+                FilterResults filterResults = new FilterResults();
 
-                FilterResults results = new FilterResults();
+                if (charSequence == null || charSequence.length() == 0) {
+                    filterResults.count = people.size();
+                    filterResults.values = people;
 
-                final List<String> list = originalData;
+                } else {
+                    String searchStr = charSequence.toString().toLowerCase();
+                    List<Person> resultData = new ArrayList<>();
 
-                int count = list.size();
-                final ArrayList<String> nlist = new ArrayList<String>(count);
-
-                String filterableString ;
-
-                for (int i = 0; i < count; i++) {
-                    filterableString = list.get(i);
-                    if (filterableString.toLowerCase().contains(filterString)) {
-                        nlist.add(filterableString);
+                    for (Person p : people) {
+                        if (p.getPersonName().toLowerCase().contains(searchStr)
+                                || p.getPersonId() == Integer.parseInt(String.valueOf(searchStr))
+                                || p.getOccupation().toLowerCase().contains(searchStr)
+                                || p.getAge() == Integer.parseInt(String.valueOf(searchStr))) {
+                            resultData.add(p);
+                        }
+                        filterResults.count = resultData.size();
+                        filterResults.values = resultData;
                     }
                 }
 
-                results.values = nlist;
-                results.count = nlist.size();
-
-                return results;
+                return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                filteredData = (ArrayList<String>) results.values;
+                filteredPeople = (ArrayList<Person>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
+        return filter;
     }
 }
