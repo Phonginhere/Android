@@ -11,7 +11,7 @@
         android:theme="@style/Theme.ListApp">
 
         <activity
-            android:name=".activity.PersonList"
+            android:name=".activity.PersonListActivity"
             android:exported="true">
 
         </activity>

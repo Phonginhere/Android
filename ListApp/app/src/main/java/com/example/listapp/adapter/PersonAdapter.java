@@ -62,12 +62,6 @@ public class PersonAdapter extends BaseAdapter implements Filterable {
         textViewAge.setText(String.valueOf(filteredPeople.get(i).getAge()));
         textViewOccupation.setText(filteredPeople.get(i).getOccupation());
 
-//        Person selectedPerson = people.get(i);
-//        textViewId.setText(String.valueOf(selectedPerson.getPersonId()));
-//        textViewName.setText(selectedPerson.getPersonName());
-//        textViewAge.setText(String.valueOf(selectedPerson.getAge()));
-//        textViewOccupation.setText(selectedPerson.getOccupation());
-
         return view;
     }
 
@@ -87,10 +81,12 @@ public class PersonAdapter extends BaseAdapter implements Filterable {
                     List<Person> resultData = new ArrayList<>();
 
                     for (Person p : people) {
+
                         if (p.getPersonName().toLowerCase().contains(searchStr)
-                                || p.getPersonId() == Integer.parseInt(String.valueOf(searchStr))
+                                || String.valueOf(p.getPersonId()).contains(searchStr)
                                 || p.getOccupation().toLowerCase().contains(searchStr)
-                                || p.getAge() == Integer.parseInt(String.valueOf(searchStr))) {
+                                ||String.valueOf(p.getAge()).contains(searchStr)
+                                ) {
                             resultData.add(p);
                         }
                         filterResults.count = resultData.size();

@@ -21,7 +21,7 @@ import com.example.listapp.models.Person;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonList extends AppCompatActivity {
+public class PersonListActivity extends AppCompatActivity {
     private List<Person> people = new ArrayList<Person>();
     private ListView listPeople;
     private PersonAdapter personAdapter;
@@ -62,7 +62,7 @@ public class PersonList extends AppCompatActivity {
         btnNavigatePlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PersonList.this, MainActivity.class);
+                Intent intent = new Intent(PersonListActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

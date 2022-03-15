@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.listapp.activity.PersonList;
+import com.example.listapp.activity.PersonListActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnNavigateLogin;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, PersonList.class);
+                Intent intent = new Intent(MainActivity.this, PersonListActivity.class);
                 startActivity(intent);
             }
         });
