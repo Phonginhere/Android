@@ -17,7 +17,7 @@ public class recycleAdapter extends RecyclerView.Adapter<recycleAdapter.MyViewHo
         this.users = users;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder(){
+    public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView nameTxt;
 
         public MyViewHolder(final View view){
@@ -35,11 +35,13 @@ public class recycleAdapter extends RecyclerView.Adapter<recycleAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull recycleAdapter.MyViewHolder holder, int position) {
-
+    String name = users.get(position).getUsername();
+    holder.nameTxt.setText(name);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+
+        return users.size();
     }
 }

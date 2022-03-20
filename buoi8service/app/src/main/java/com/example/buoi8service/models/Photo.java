@@ -1,5 +1,7 @@
 package com.example.buoi8service.models;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class Photo implements Serializable {
@@ -15,6 +17,20 @@ public class Photo implements Serializable {
         this.title = title;
         this.url = url;
         this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public static Photo getFromJSONObject(JSONObject jsonObject) throws Exception{
+        //validate HERE !
+        try {
+            Integer albumId = jsonObject.getInt("albumId");
+            Integer id = jsonObject.getInt("id");
+            String title = jsonObject.getString("title");
+            String url = jsonObject.getString("url");
+            String thumbnailUrl = jsonObject.getString("thumbnailUrl");
+            return new Photo(albumId, id, title, url, thumbnailUrl);
+        }catch (Exception e) {
+            throw e;
+        }
     }
 
     public int getAlbumId() {

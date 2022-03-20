@@ -7,6 +7,9 @@ import androidx.annotation.NonNull;
 
 import com.example.buoi8service.models.Photo;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -29,11 +32,24 @@ public class PhotoService {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                Log.d("success", "success");
+                ArrayList<Photo> photos = new ArrayList<>();
+                try{
+                    Log.d("success", "success");
+                    String jsonString = response.body().string();
+                    JSONArray responseArray = new JSONArray(jsonString);
+                    for(int i = 0; i < responseArray.length(); i++) {
+                        JSONObject jsonObject = responseArray.getJSONObject(i);
+                        Photo photo = Photo.getFromJSONObject(jsonObject);
+                        photos.add(photo);
+                        Log.d("aaa", "aaa");
+                    }
+                }catch (Exception e){
+                    photosResponse.getPhotosResponse(photos, e.toString());
+                }
 
-                ArrayList<Photo> fakePhotos = new ArrayList<>();
-                fakePhotos.add(new Photo(1,1, "xx", "yy", "zz"));
-                photosResponse.getPhotosResponse(fakePhotos);
+//                ArrayList<Photo> fakePhotos = new ArrayList<>();
+//                fakePhotos.add(new Photo(1,1, "xx", "yy", "zz"));
+//                photosResponse.getPhotosResponse(fakePhotos);
             }
         });
         Log.d("ddd", "do other");
