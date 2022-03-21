@@ -43,13 +43,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryItemView> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryItemView holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryItemView categoryItemView, int position) {
         Category selectedCategory = this.categories.get(position);
-        holder.setCategory(selectedCategory);
+        categoryItemView.setCategory(selectedCategory, position);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return categories.size();
     }
 }

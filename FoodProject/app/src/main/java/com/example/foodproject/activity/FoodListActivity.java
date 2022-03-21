@@ -26,7 +26,8 @@ public class FoodListActivity extends AppCompatActivity {
     private ArrayList<Food> foods = new ArrayList();
     private ArrayList<Category> categories = new ArrayList();
     //Horizontal or Vertical ?
-    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.LayoutManager layoutManagerFood;
+    private RecyclerView.LayoutManager layoutManagerCategory;
     //db
     DatabaseHelper databaseHelper;
 
@@ -139,9 +140,9 @@ public class FoodListActivity extends AppCompatActivity {
         foodAdapter = new FoodAdapter(this, foods);
         recycleViewFoods.setAdapter(foodAdapter);
         //Horizontal or Vertical ? vertical
-        layoutManager = new LinearLayoutManager(getApplicationContext(),
+        layoutManagerFood = new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL, false);
-        recycleViewFoods.setLayoutManager(layoutManager);
+        recycleViewFoods.setLayoutManager(layoutManagerFood);
 
         //Horizontal Category
         recycleViewCategory = findViewById(R.id.recycleViewCategory);
@@ -149,9 +150,9 @@ public class FoodListActivity extends AppCompatActivity {
         categoryAdapter = new CategoryAdapter(this, categories);
         recycleViewCategory.setAdapter(categoryAdapter);
         //Horizontal or Vertical ? Horizontal
-        layoutManager = new LinearLayoutManager(getApplicationContext(),
+        layoutManagerCategory = new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false);
-        recycleViewCategory.setLayoutManager(layoutManager);
+        recycleViewCategory.setLayoutManager(layoutManagerCategory);
 
 
     }

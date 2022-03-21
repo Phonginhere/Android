@@ -1,5 +1,6 @@
 package com.example.foodproject.view;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,12 +16,18 @@ import com.squareup.picasso.Picasso;
 public class CategoryItemView extends RecyclerView.ViewHolder {
     private TextView textViewCategory;
     private TextView txtNumber;
-    private Category category;
 
-    public void setCategory(Category category) {
+    private Category category;
+    private int position;
+    private View itemView;
+
+    public void setCategory(Category category,int position) {
         this.category = category;
+        this.position = position;
         textViewCategory.setText(category.getCategoryName());
-        txtNumber.setText(category.getCategoryQuantity());
+        txtNumber.setText(String.valueOf(category.getCategoryQuantity()));
+        itemView.setBackgroundColor(position %2 == 0 ?
+                Color.rgb(255, 0,0): Color.rgb(0, 255,0));
     }
 
     public Category getCategory() {
@@ -29,7 +36,9 @@ public class CategoryItemView extends RecyclerView.ViewHolder {
 
     public CategoryItemView(@NonNull View itemView) {
         super(itemView);
+        this.itemView = itemView;
         textViewCategory = itemView.findViewById(R.id.textViewCategory);
         txtNumber = itemView.findViewById(R.id.txtNumber);
+
     }
 }
