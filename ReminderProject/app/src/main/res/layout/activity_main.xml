@@ -7,8 +7,10 @@
     tools:context=".MainActivity">
 
     <ListView
+        android:id="@+id/listViewReminder"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
