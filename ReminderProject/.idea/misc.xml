@@ -3,12 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.182" />
+        <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/drawable/ic_icon.xml" value="0.182" />
+        <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.182" />
         <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/layout/activity_create_view.xml" value="0.25" />
-        <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/layout/activity_edit.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/layout/context_option_menu.xml" value="0.20923913043478262" />
         <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/layout/list_item.xml" value="0.2" />
         <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/layout/new_reminder_view.xml" value="0.264" />
         <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/menu/example_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/Documents/GITHUB/Android/ReminderProject/app/src/main/res/menu/popup_menu.xml" value="0.25" />
       </map>
     </option>
   </component>
