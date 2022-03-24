@@ -1,4 +1,4 @@
-package phong.aprotrain.com;
+package phong.aprotrain.com.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,34 +11,47 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class CreateActivity extends AppCompatActivity {
-    private EditText editText;
+import phong.aprotrain.com.R;
+
+public class EditActivity extends AppCompatActivity {
+    private  EditText editText;
     private TextView textViewValidate;
-    private Button buttonStatus;
+    private  Button buttonStatus;
     private Button buttonCancel;
     private Button buttonCommit;
+    private TextView textHiddenId;
     private String textStatus;
     private Boolean isValidInput;
 
     private String errorText = "";
-
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_view);
+        setContentView(R.layout.activity_edit);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
 
-        //ánh xạ
+
         editText = (EditText) findViewById(R.id.editText);
         buttonStatus = (Button) findViewById(R.id.buttonStatus);
         buttonCancel = (Button) findViewById(R.id.buttonCancel);
         buttonCommit = (Button) findViewById(R.id.buttonCommit);
         textViewValidate = (TextView) findViewById(R.id.textViewValidate);
+        textHiddenId = (TextView) findViewById(R.id.textHiddenId);
 
+        String noidung = MainActivity.noidung;
+        boolean quantrong = MainActivity.quantrong;
+        String position = MainActivity.positionToEdit;
 
-        //hoạt động của text: validate dữ liệu
+        textHiddenId.setText(position);
+        editText.setText(noidung);
+        if(quantrong == false ){
+            buttonStatus.setText("Unimportant");
+        }else{
+            buttonStatus.setText("Important");
+        }
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -49,9 +62,9 @@ public class CreateActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String text = editText.getText().toString().trim();
                 isValidInput = (text.length() > 0);
-                CreateActivity.this.errorText = isValidInput == true ? "" : "Text must not blank";
+                EditActivity.this.errorText = isValidInput == true ? "" : "Text must not blank";
                 buttonCommit.setEnabled(isValidInput);
-                textViewValidate.setText(CreateActivity.this.errorText);
+                textViewValidate.setText(EditActivity.this.errorText);
             }
 
             @Override
@@ -59,15 +72,12 @@ public class CreateActivity extends AppCompatActivity {
 
             }
         });
-
-        //hủy và back lại sang trang chính
         buttonCancel.setOnClickListener((View view) -> { //thuc thi click trong interface, on click la ban se lam gi do
             //show small alert
-                    Intent createIntent = new Intent(CreateActivity.this, MainActivity.class);
-                    startActivity(createIntent);
-            });
+            Intent createIntent = new Intent(EditActivity.this, MainActivity.class);
+            startActivity(createIntent);
+        });
 
-        //chuyển thanh trạng thái
         buttonStatus.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,8 +89,6 @@ public class CreateActivity extends AppCompatActivity {
                 }
             }
         }));
-
-        //gửi
         buttonCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,15 +97,18 @@ public class CreateActivity extends AppCompatActivity {
                 String statusName = buttonStatus.getText().toString().trim();
                 if(text != null){
                     if(s.contains("Important") ){
-                        MainActivity.onCreateReminder(text, true);
+                        MainActivity.onEditPostReminder(position, text, true);
                     }else if(s.contains("Unimportant") ) {
-                        MainActivity.onCreateReminder(text, false);
+                        MainActivity.onEditPostReminder(position,text, false);
                     }
-                    Intent createIntent = new Intent(CreateActivity.this, MainActivity.class);
+                    Intent createIntent = new Intent(EditActivity.this, MainActivity.class);
                     startActivity(createIntent);
                 }
 
             }
         });
+
     }
+    */
+
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/green"
     android:labelFor="@+id/editText"
-    tools:context=".CreateActivity">
+    tools:context=".activities.InsertReminderActivity">
 
     <TextView
         android:id="@+id/textView"

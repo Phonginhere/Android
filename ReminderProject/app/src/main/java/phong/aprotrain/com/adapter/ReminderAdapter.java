@@ -1,12 +1,9 @@
 package phong.aprotrain.com.adapter;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,23 +13,19 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
-import java.util.List;
 
-import phong.aprotrain.com.CreateActivity;
-import phong.aprotrain.com.EditActivity;
-import phong.aprotrain.com.MainActivity;
+import phong.aprotrain.com.activities.EditActivity;
+import phong.aprotrain.com.activities.MainActivity;
 import phong.aprotrain.com.R;
 import phong.aprotrain.com.model.Reminder;
 
-public class CustomAdapter extends ArrayAdapter<Reminder> {
+public class ReminderAdapter extends ArrayAdapter<Reminder> {
     private ArrayList<Reminder> reminders;
     private Context context;
     private Button button;
 
-    public CustomAdapter(Context context, ArrayList<Reminder> reminders) {
+    public ReminderAdapter(Context context, ArrayList<Reminder> reminders) {
         super(context, 0, reminders);
 //        this.context = context;
 //        this.reminders = reminders;
@@ -91,11 +84,11 @@ public class CustomAdapter extends ArrayAdapter<Reminder> {
                 Intent intent = new Intent(getContext(),EditActivity.class);
 
                 getContext().startActivity(intent);
-                MainActivity.onEditViewReminder(position);
+                //MainActivity.onEditViewReminder(position);
                 break;
             case R.id.deleteReminder:
                 Toast.makeText(getContext(), "Upload", Toast.LENGTH_SHORT).show();
-                MainActivity.onRemoveReminder(position);
+                //MainActivity.onRemoveReminder(position);
                 Intent intentRemove = new Intent(getContext(),MainActivity.class);
                 getContext().startActivity(intentRemove);
                 break;
