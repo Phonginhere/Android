@@ -1,6 +1,8 @@
 package phong.aprotrain.com.model;
 
-public class Reminder {
+import java.io.Serializable;
+
+public class Reminder implements Serializable {
     private String noidung;
     private boolean quantrong;
 

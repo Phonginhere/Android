@@ -1,10 +1,12 @@
 package phong.aprotrain.com.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,10 +18,9 @@ import android.widget.TextView;
 import phong.aprotrain.com.R;
 import phong.aprotrain.com.model.Reminder;
 import phong.aprotrain.com.repositories.IReminderRepository;
+import phong.aprotrain.com.repositories.ReminderRepository;
 
-public class InsertReminderActivity extends AppCompatActivity {
-    public static IReminderRepository reminderRepository;
-
+public class InsertReminderActivity extends BaseActivity {
     private EditText editText;
     private TextView textViewValidate;
     private Button buttonStatus;
@@ -31,7 +32,7 @@ public class InsertReminderActivity extends AppCompatActivity {
     private String errorText = "";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_view);
         //reminderRepository = (IReminderRepository) (getIntent().getSerializableExtra("reminderRepository"));
@@ -70,9 +71,9 @@ public class InsertReminderActivity extends AppCompatActivity {
         //hủy và back lại sang trang chính
         buttonCancel.setOnClickListener((View view) -> { //thuc thi click trong interface, on click la ban se lam gi do
             //show small alert
-                    Intent createIntent = new Intent(InsertReminderActivity.this, MainActivity.class);
-                    startActivity(createIntent);
-            });
+            Intent createIntent = new Intent(InsertReminderActivity.this, MainActivity.class);
+            startActivity(createIntent);
+        });
 
         //chuyển thanh trạng thái
         buttonStatus.setOnClickListener((new View.OnClickListener() {
@@ -91,14 +92,14 @@ public class InsertReminderActivity extends AppCompatActivity {
         buttonCommit.setOnClickListener((View view) -> {
             Log.d("xx", "ddd");
             String status = buttonStatus.getText().toString();
-//                String noidung = editText.getText().toString().trim();
-//                if(noidung != null){
-//                    Boolean newStatus = status.trim().toLowerCase().contains("important");
-//                    reminderRepository.insertReminder(new Reminder(noidung, newStatus));
-//                    //goback
-//                    InsertReminderActivity.this.finish();
-//                    //reload Main
-//                }
+                String noidung = editText.getText().toString().trim();
+                if(noidung != null){
+                    Boolean newStatus = status.trim().toLowerCase().equals("important");
+                    reminderRepository.insertReminder(new Reminder(noidung, newStatus));
+                    //goback
+                    this.finish();
+                    //reload Main
+                }
 
         });
     }

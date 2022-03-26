@@ -39,14 +39,12 @@ public class ReminderRepository implements IReminderRepository, Serializable {
     }
 
     @Override
-    public Reminder updateReminder(String name, Reminder reminder) {
+    public Reminder updateReminder(Integer position, Reminder reminder) {
         try {
-            Reminder foundReminder = reminders.stream()
-                    .filter(eachReminder -> eachReminder
-                            .getNoidung().trim().toLowerCase()
-                            .equals(name.trim().toLowerCase()))
-                    .findAny()
-                    .orElse(null);
+            if(position < 0 || position >= reminders.size()) {
+                return null;
+            }
+            Reminder foundReminder = reminders.get(position);
             if(foundReminder != null) {
                 foundReminder.setNoidung(reminder.getNoidung());
                 foundReminder.setQuantrong(reminder.isQuantrong());

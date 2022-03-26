@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import phong.aprotrain.com.activities.EditActivity;
+import phong.aprotrain.com.activities.InsertReminderActivity;
 import phong.aprotrain.com.activities.MainActivity;
 import phong.aprotrain.com.R;
 import phong.aprotrain.com.model.Reminder;
@@ -47,28 +48,30 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
             button.setBackgroundColor(Color.rgb(255, 0, 0));
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Initializing the popup menu and giving the reference as current context
-                PopupMenu popupMenu = new PopupMenu(getContext(), button);
-
-                // Inflating popup menu from popup_menu.xml file
-                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        // Toast message on menu item clicked
-                        Toast.makeText(getContext(), "You Clicked " + position, Toast.LENGTH_SHORT).show();
-                        menuItemClicked(menuItem, position);
-
-                        return true;
-                    }
-                });
-                // Showing the popup menu
-                popupMenu.show();
-            }
+        button.setOnClickListener((View viewButton) -> {
+            PopupMenu popupMenu = new PopupMenu(getContext(), button);
+            // Inflating popup menu from popup_menu.xml file
+            popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem menuItem) {
+                    // Toast message on menu item clicked
+//                    Toast.makeText(getContext(), "You Clicked " + position, Toast.LENGTH_SHORT).show();
+//                    menuItemClicked(menuItem, position);
+                    Intent intent = new Intent(
+                            getContext(),
+                            EditActivity.class);
+                    intent.putExtra("selectedReminder", selectedReminder);
+                    intent.putExtra("position", position);
+                    getContext().startActivity(intent);
+//
+                    return true;
+                }
+            });
+            // Showing the popup menu
+            popupMenu.show();
         });
+
 
 
 

@@ -7,25 +7,32 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import phong.aprotrain.com.R;
+import phong.aprotrain.com.model.Reminder;
+import phong.aprotrain.com.repositories.IReminderRepository;
+import phong.aprotrain.com.repositories.ReminderRepository;
 
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends BaseActivity {
+
     private  EditText editText;
+    private Button buttonCancel;
     private TextView textViewValidate;
     private  Button buttonStatus;
-    private Button buttonCancel;
     private Button buttonCommit;
     private TextView textHiddenId;
     private String textStatus;
     private Boolean isValidInput;
+    private Reminder selectedReminder;
 
     private String errorText = "";
-    /*
+    private  int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +46,11 @@ public class EditActivity extends AppCompatActivity {
         buttonCommit = (Button) findViewById(R.id.buttonCommit);
         textViewValidate = (TextView) findViewById(R.id.textViewValidate);
         textHiddenId = (TextView) findViewById(R.id.textHiddenId);
-
-        String noidung = MainActivity.noidung;
-        boolean quantrong = MainActivity.quantrong;
-        String position = MainActivity.positionToEdit;
-
-        textHiddenId.setText(position);
-        editText.setText(noidung);
-        if(quantrong == false ){
-            buttonStatus.setText("Unimportant");
-        }else{
-            buttonStatus.setText("Important");
-        }
+        selectedReminder = (Reminder) getIntent().getSerializableExtra("selectedReminder");
+        position = getIntent().getIntExtra("position", position);
+        editText.setText(selectedReminder.getNoidung());
+        buttonStatus.setText(selectedReminder.isQuantrong() == true ?
+                "Important" : "Unimportant");
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,26 +89,23 @@ public class EditActivity extends AppCompatActivity {
                 }
             }
         }));
-        buttonCommit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String s = buttonStatus.getText().toString();
-                String text = editText.getText().toString().trim();
-                String statusName = buttonStatus.getText().toString().trim();
-                if(text != null){
-                    if(s.contains("Important") ){
-                        MainActivity.onEditPostReminder(position, text, true);
-                    }else if(s.contains("Unimportant") ) {
-                        MainActivity.onEditPostReminder(position,text, false);
-                    }
-                    Intent createIntent = new Intent(EditActivity.this, MainActivity.class);
-                    startActivity(createIntent);
-                }
-
+        buttonCommit.setOnClickListener((View view) -> {
+            Log.d("xx", "ddd");
+            String status = buttonStatus.getText().toString();
+            String noidung = editText.getText().toString().trim();
+            if(noidung != null){
+                Boolean newStatus = status.trim().toLowerCase().equals("important");
+                selectedReminder.setQuantrong(newStatus);
+                selectedReminder.setNoidung(noidung);
+                reminderRepository.updateReminder(position, selectedReminder);
+                //goback
+                this.finish();
+                //reload Main
             }
+
         });
 
     }
-    */
+
 
 }

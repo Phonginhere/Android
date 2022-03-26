@@ -18,7 +18,7 @@ import phong.aprotrain.com.model.Reminder;
 import phong.aprotrain.com.repositories.IReminderRepository;
 import phong.aprotrain.com.repositories.ReminderRepository;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     //Activity -> Repository -> Fake data || Call Web Service || (Database SQLite)
     private ListView listViewReminder;
     private ArrayList<Reminder> reminders; //static: khi doi tuong ton tai mai mai
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     //?
     private Reminder selectedReminder;
 
-    private IReminderRepository reminderRepository = new ReminderRepository();
     //private IReminderRepository reminderRepository = new SqliteRepository();
 //    protected static String noidung;
 //    protected static boolean quantrong;
@@ -60,10 +59,15 @@ public class MainActivity extends AppCompatActivity {
                 //intent.putExtra("reminderRepository", (ReminderRepository)reminderRepository);
                 MainActivity.this
                         .startActivity(intent);
-                InsertReminderActivity.reminderRepository = reminderRepository;
-            }
 
-            case R.id.exit:System.exit(0);
+                break;
+            }
+            case R.id.exit:{
+                System.exit(0);
+                break;
+            }
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -86,4 +90,20 @@ public class MainActivity extends AppCompatActivity {
 //        reminders.set(Integer.parseInt(position), new Reminder(textName, status));
 //        //reminders.remove(position);
 //    }
+    //Activity lifecycle
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //int x = 11;
+        //listViewReminder.invalidate();
+        if(listViewReminder != null) {
+            reminderAdapter.notifyDataSetChanged();
+        }
+    }
+
 }
