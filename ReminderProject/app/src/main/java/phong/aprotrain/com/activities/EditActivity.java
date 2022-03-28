@@ -93,7 +93,7 @@ public class EditActivity extends BaseActivity {
             Log.d("xx", "ddd");
             String status = buttonStatus.getText().toString();
             String noidung = editText.getText().toString().trim();
-            if(noidung != null){
+            if(noidung != null && !noidung.equals("")){
                 Boolean newStatus = status.trim().toLowerCase().equals("important");
                 selectedReminder.setQuantrong(newStatus);
                 selectedReminder.setNoidung(noidung);

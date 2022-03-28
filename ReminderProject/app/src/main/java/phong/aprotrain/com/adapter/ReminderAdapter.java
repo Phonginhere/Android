@@ -26,10 +26,18 @@ public class ReminderAdapter extends ArrayAdapter<Reminder> {
     private Context context;
     private Button button;
 
+    public void setReminders(ArrayList<Reminder> reminders) {
+        this.reminders = reminders;
+    }
+
     public ReminderAdapter(Context context, ArrayList<Reminder> reminders) {
         super(context, 0, reminders);
 //        this.context = context;
 //        this.reminders = reminders;
+    }
+
+    public ArrayList<Reminder> getReminders() {
+        return reminders;
     }
 
     @Override

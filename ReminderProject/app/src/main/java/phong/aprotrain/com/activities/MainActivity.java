@@ -39,7 +39,8 @@ public class MainActivity extends BaseActivity {
 
         listViewReminder = findViewById(R.id.listViewReminder);
         reminders = reminderRepository.getAllReminders();
-        reminderAdapter = new ReminderAdapter(this, reminders);listViewReminder.setAdapter(reminderAdapter);
+        reminderAdapter = new ReminderAdapter(this, reminders);
+        listViewReminder.setAdapter(reminderAdapter);
     }
 
     @Override
@@ -102,6 +103,7 @@ public class MainActivity extends BaseActivity {
         //int x = 11;
         //listViewReminder.invalidate();
         if(listViewReminder != null) {
+            reminderAdapter.setReminders(reminderRepository.getAllReminders());
             reminderAdapter.notifyDataSetChanged();
         }
     }
